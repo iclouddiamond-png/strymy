@@ -7,7 +7,9 @@ const path = require('path');
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 const DATA_DIR = process.env.DATA_DIR || __dirname;
+const DOCS_DIR = path.join(__dirname, 'docs');
 const DIST_DIR = path.join(__dirname, 'dist');
+const STATIC_DIR = fs.existsSync(DOCS_DIR) ? DOCS_DIR : DIST_DIR;
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
@@ -311,11 +313,11 @@ app.delete('/api/user/:phone', (req, res) => {
   }
 });
 
-if (fs.existsSync(DIST_DIR)) {
-  app.use(express.static(DIST_DIR));
+if (fs.existsSync(STATIC_DIR)) {
+  app.use(express.static(STATIC_DIR));
 
   app.get(/^(?!\/api).*/, (req, res) => {
-    res.sendFile(path.join(DIST_DIR, 'index.html'));
+    res.sendFile(path.join(STATIC_DIR, 'index.html'));
   });
 }
 

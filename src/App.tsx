@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import AdminPanel from './AdminPanel'
 import heroImage from './assets/photo_2026-04-18 20.22.25.jpeg'
+import { apiUrl } from './api'
 
 interface Comment {
   user: string
   message: string
 }
-
-const API_URL = '/api'
 
 function App() {
   const [isAdminPage, setIsAdminPage] = useState(window.location.pathname === '/admin')
@@ -75,7 +74,7 @@ function App() {
     setError('')
 
     try {
-      const response = await fetch(`${API_URL}/create-pending-request`, {
+      const response = await fetch(apiUrl('/create-pending-request'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: phone.trim() })
@@ -90,7 +89,7 @@ function App() {
 
       setStep('code')
     } catch (err) {
-      setError('Ошибка подключения к серверу')
+      setError('Ошибка подключения к серверу. Проверьте, что backend запущен и указан VITE_API_URL.')
       console.error(err)
     } finally {
       setLoading(false)
@@ -107,7 +106,7 @@ function App() {
     setError('')
 
     try {
-      const response = await fetch(`${API_URL}/verify-user-code`, {
+      const response = await fetch(apiUrl('/verify-user-code'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: phone.trim(), code: code.trim() })
@@ -125,7 +124,7 @@ function App() {
       setIsLoggedIn(true)
       setStep('success')
     } catch (err) {
-      setError('Ошибка подключения к серверу')
+      setError('Ошибка подключения к серверу. Проверьте, что backend запущен и указан VITE_API_URL.')
       console.error(err)
     } finally {
       setLoading(false)

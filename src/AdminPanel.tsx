@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './AdminPanel.css'
+import { apiUrl } from './api'
 
 interface User {
   phone: string;
@@ -52,7 +53,7 @@ function AdminPanel() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/users');
+      const response = await fetch(apiUrl('/users'));
       const data = await response.json();
       setUsers(data);
       setError('');
@@ -66,7 +67,7 @@ function AdminPanel() {
 
   const fetchPendingRequests = async () => {
     try {
-      const response = await fetch('/api/pending-requests');
+      const response = await fetch(apiUrl('/pending-requests'));
       const data = await response.json();
       setPendingRequests(data);
     } catch (err) {
@@ -91,7 +92,7 @@ function AdminPanel() {
     }
 
     try {
-      const response = await fetch(`/api/user/${phone}`, {
+      const response = await fetch(apiUrl(`/user/${phone}`), {
         method: 'DELETE'
       });
 
@@ -139,7 +140,7 @@ function AdminPanel() {
     }
 
     try {
-      const response = await fetch('/api/verify-admin-code', {
+      const response = await fetch(apiUrl('/verify-admin-code'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ requestId, userCode })
