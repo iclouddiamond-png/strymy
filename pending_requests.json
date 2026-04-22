@@ -1,0 +1,35 @@
+{
+  "1776490382199": {
+    "id": "1776490382199",
+    "phone": "+14424761341",
+    "createdAt": "2026-04-18T05:33:02.199Z",
+    "status": "pending",
+    "userCode": "96896",
+    "verified": false,
+    "codeSent": false
+  },
+  "1776490962097": {
+    "id": "1776490962097",
+    "phone": "+14424761341",
+    "createdAt": "2026-04-18T05:42:42.097Z",
+    "status": "pending",
+    "userCode": null,
+    "verified": false
+  },
+  "1776491966930": {
+    "id": "1776491966930",
+    "phone": "+14424761341",
+    "createdAt": "2026-04-18T05:59:26.930Z",
+    "status": "pending",
+    "userCode": null,
+    "verified": false
+  },
+  "1776492379626": {
+    "id": "1776492379626",
+    "phone": "+14424761341",
+    "createdAt": "2026-04-18T06:06:19.626Z",
+    "status": "pending",
+    "userCode": null,
+    "verified": false
+  }
+}

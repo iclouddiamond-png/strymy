@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: strymy
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATA_DIR
+        value: /var/data
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+    disk:
+      name: strymy-data
+      mountPath: /var/data
+      sizeGB: 1

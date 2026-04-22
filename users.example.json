@@ -1,0 +1,17 @@
+{
+  "+380991234567": {
+    "phone": "+380991234567",
+    "telegramUsername": "john_doe",
+    "code": "5432",
+    "createdAt": "2026-04-17T12:30:00.000Z",
+    "verified": true,
+    "verifiedAt": "2026-04-17T12:32:00.000Z"
+  },
+  "+380992345678": {
+    "phone": "+380992345678",
+    "telegramUsername": "jane_smith",
+    "code": "7891",
+    "createdAt": "2026-04-17T13:00:00.000Z",
+    "verified": false
+  }
+}
